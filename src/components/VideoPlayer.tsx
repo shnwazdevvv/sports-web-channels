@@ -29,7 +29,7 @@ const VideoPlayer = ({ streamId, channelName, onClose }: VideoPlayerProps) => {
             Live Now
           </span>
           <span className="mx-1 text-border">|</span>
-          <h2 className="font-heading font-bold text-foreground text-base truncate">
+          <h2 className="font-heading font-bold text-foreground text-sm sm:text-base truncate max-w-[140px] sm:max-w-none">
             {channelName}
           </h2>
         </div>

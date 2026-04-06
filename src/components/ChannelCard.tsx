@@ -20,7 +20,7 @@ const ChannelCard = ({ name, streamId, isActive, onPlay }: ChannelCardProps) => 
     >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl glass-icon font-heading font-bold text-primary text-xs">
+          <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl glass-icon font-heading font-bold text-primary text-[10px] sm:text-xs">
             STR
           </div>
           <div className="min-w-0">
