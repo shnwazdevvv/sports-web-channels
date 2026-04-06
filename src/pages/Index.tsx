@@ -71,7 +71,7 @@ const Index = () => {
               className={`shrink-0 rounded-full px-5 py-2 text-sm font-heading font-semibold transition-all duration-300 ${
                 activeCategory === cat
                   ? "glass-tab-active"
-                  : "glass-tab text-muted-foreground hover:text-foreground"
+                  : "glass-tab text-muted-foreground hover:text-foreground hover:bg-white/50"
               }`}
             >
               {cat}

@@ -92,9 +92,34 @@
   }
 
   .glass-tab-active {
-    background: hsl(220 70% 50%);
-    border: 1px solid hsl(220 70% 55%);
+    background: hsl(220 70% 50% / 0.85);
+    border: 1px solid hsl(220 70% 60% / 0.6);
     color: white;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px hsl(220 70% 50% / 0.25);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-card-active {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .glass-icon {
+    background: hsl(220 70% 50% / 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .scrollbar-hide::-webkit-scrollbar {

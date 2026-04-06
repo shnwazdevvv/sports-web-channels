@@ -14,13 +14,13 @@ const ChannelCard = ({ name, streamId, isActive, onPlay }: ChannelCardProps) => 
   return (
     <div
       className={`group relative rounded-2xl p-4 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 ${
-        isActive ? "glass-strong ring-2 ring-primary/30" : "glass"
+        isActive ? "glass-card-active ring-2 ring-primary/30" : "glass-card"
       }`}
       onClick={() => onPlay(streamId, name)}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 font-heading font-bold text-primary text-xs">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl glass-icon font-heading font-bold text-primary text-xs">
             STR
           </div>
           <div className="min-w-0">
@@ -33,7 +33,7 @@ const ChannelCard = ({ name, streamId, isActive, onPlay }: ChannelCardProps) => 
                 LIVE
               </span>
               {isHD && (
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-primary/10 text-primary">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md glass-icon text-primary">
                   HD
                 </span>
               )}

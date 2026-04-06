@@ -8,7 +8,7 @@ interface VideoPlayerProps {
 
 const VideoPlayer = ({ streamId, channelName, onClose }: VideoPlayerProps) => {
   return (
-    <div className="animate-fade-up rounded-2xl glass-strong overflow-hidden">
+    <div className="animate-fade-up rounded-2xl glass-card overflow-hidden">
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-destructive animate-pulse-live" />
@@ -22,7 +22,7 @@ const VideoPlayer = ({ streamId, channelName, onClose }: VideoPlayerProps) => {
         </div>
         <button
           onClick={onClose}
-          className="flex h-8 w-8 items-center justify-center rounded-full glass-tab text-muted-foreground hover:text-foreground transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-full glass-icon text-muted-foreground hover:text-foreground transition-colors"
         >
           <X className="h-4 w-4" />
         </button>
@@ -43,6 +43,8 @@ const VideoPlayer = ({ streamId, channelName, onClose }: VideoPlayerProps) => {
             Live
           </span>
         </div>
+        {/* Bottom overlay to hide watermarks */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
       </div>
     </div>
   );
