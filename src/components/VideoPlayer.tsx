@@ -1,4 +1,5 @@
-import { X } from "lucide-react";
+import { X, RefreshCw, Loader2 } from "lucide-react";
+import { useState, useCallback } from "react";
 
 interface VideoPlayerProps {
   streamId: string;
@@ -7,6 +8,18 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ streamId, channelName, onClose }: VideoPlayerProps) => {
+  const [loading, setLoading] = useState(true);
+  const [retryKey, setRetryKey] = useState(Date.now());
+
+  const handleRetry = useCallback(() => {
+    setLoading(true);
+    setRetryKey(Date.now());
+  }, []);
+
+  const handleLoad = useCallback(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <div className="animate-fade-up rounded-2xl glass-card overflow-hidden">
       <div className="flex items-center justify-between px-4 py-3">
@@ -20,24 +33,40 @@ const VideoPlayer = ({ streamId, channelName, onClose }: VideoPlayerProps) => {
             {channelName}
           </h2>
         </div>
-        <button
-          onClick={onClose}
-          className="flex h-8 w-8 items-center justify-center rounded-full glass-icon text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <X className="h-4 w-4" />
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleRetry}
+            className="flex h-8 w-8 items-center justify-center rounded-full glass-icon text-muted-foreground hover:text-foreground transition-colors"
+            title="Reload stream"
+          >
+            <RefreshCw className="h-4 w-4" />
+          </button>
+          <button
+            onClick={onClose}
+            className="flex h-8 w-8 items-center justify-center rounded-full glass-icon text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
       </div>
       <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+        {loading && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
+            <Loader2 className="h-8 w-8 text-primary animate-spin mb-2" />
+            <p className="text-xs text-white/80 font-medium">Loading stream...</p>
+          </div>
+        )}
         <iframe
-          key={streamId}
-          src={`https://apiok.pages.dev/?id=${streamId}&autoplay=1&t=${Date.now()}`}
+          key={`${streamId}-${retryKey}`}
+          src={`https://apiok.pages.dev/?id=${streamId}&autoplay=1&t=${retryKey}`}
           className="absolute inset-0 w-full h-full"
           allowFullScreen
           allow="autoplay; encrypted-media; fullscreen"
           title={channelName}
+          onLoad={handleLoad}
         />
         {/* Live badge overlay */}
-        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-destructive/90 backdrop-blur-sm">
+        <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-destructive/90 backdrop-blur-sm">
           <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground animate-pulse-live" />
           <span className="text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
             Live
