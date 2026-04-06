@@ -13,7 +13,7 @@ const ChannelCard = ({ name, streamId, isActive, onPlay }: ChannelCardProps) => 
 
   return (
     <div
-      className={`group relative rounded-2xl p-4 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 ${
+      className={`group relative rounded-xl sm:rounded-2xl p-3 sm:p-4 cursor-pointer transition-all duration-300 active:scale-[0.98] hover:-translate-y-0.5 ${
         isActive ? "glass-card-active ring-2 ring-primary/30" : "glass-card"
       }`}
       onClick={() => onPlay(streamId, name)}
