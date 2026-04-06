@@ -1,12 +1,13 @@
-import { Instagram } from "lucide-react";
+import { Send } from "lucide-react";
 
 interface TeamMember {
   username: string;
   role: string;
+  telegram: string;
 }
 
 const team: TeamMember[] = [
-  { username: "@sexyshnwaz", role: "Founder & Admin" },
+  { username: "@sexyshnwaz", role: "Founder & Admin", telegram: "sexyshnwaz" },
 ];
 
 const TeamSection = () => {
@@ -17,14 +18,14 @@ const TeamSection = () => {
         {team.map((member) => (
           <div
             key={member.username}
-            className="glass rounded-2xl p-5 flex items-center gap-4 animate-fade-up"
+            className="glass-card rounded-2xl p-5 flex items-center gap-4 animate-fade-up"
           >
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-              <Instagram className="h-5 w-5 text-primary" />
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full glass-icon">
+              <Send className="h-5 w-5 text-primary" />
             </div>
             <div className="min-w-0">
               <a
-                href={`https://instagram.com/${member.username.replace("@", "")}`}
+                href={`https://t.me/${member.telegram}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-heading font-bold text-foreground text-base hover:text-primary transition-colors"
